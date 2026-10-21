@@ -66,7 +66,7 @@ jobs:
       - name: Prepare static site
         run: |
           mkdir -p _site
-          cp index.html auth.js auth-config.js _site/
+          cp index.html auth.js auth-config.js onboarding.js onboarding.css _site/
           cp -R assets _site/assets
           touch _site/.nojekyll
 

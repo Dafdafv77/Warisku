@@ -54,3 +54,8 @@ Jangan menaruh Google Client Secret atau Facebook App Secret dalam repository at
 - **Login berhasil tetapi dashboard masih data dummy**: autentikasi belum menyambungkan data aset. Sebelum memakai data nyata, database/storage dan Row Level Security (RLS) harus dibangun dan diuji.
 
 Jangan memasukkan KTP atau data aset nyata pada prototipe ini.
+
+
+## Onboarding pengguna baru
+
+Workflow GitHub Pages sekarang menyalin `onboarding.js` dan `onboarding.css` bersama `index.html`. Pastikan kedua file ada di root repository dan commit keduanya. Saat login pertama, tur onboarding 3 slide muncul otomatis; statusnya disimpan pada metadata akun Supabase dengan fallback lokal. Tombol **Panduan** membuka ulang tur.

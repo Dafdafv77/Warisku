@@ -125,6 +125,7 @@ function showAuthView() {
   signOutButton.hidden = true;
   emailDisplay.textContent = "";
   setMode("signin");
+  window.dispatchEvent(new Event("warisku:signed-out"));
 }
 
 function showApp(session) {
@@ -142,6 +143,9 @@ function showApp(session) {
   userAvatar.title = fullName || email;
   prototypeTag.textContent = "PROTOTIPE • DATA DUMMY";
   demoRoomLabel.textContent = "Akun aktif";
+  // Let the separate onboarding module decide whether this user needs the first-run tour.
+  // Completion is tracked per account (Supabase metadata) with a browser-local fallback.
+  window.dispatchEvent(new CustomEvent("warisku:authenticated", { detail: { user: session?.user || null, supabase } }));
 }
 
 function enterDemoMode() {

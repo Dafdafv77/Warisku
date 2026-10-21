@@ -8,6 +8,7 @@ Prototipe statis **Warisku: Family Continuity Platform** dengan autentikasi nyat
 - Lupa password dan set password baru melalui link pemulihan.
 - Login OAuth melalui Google dan Facebook.
 - Sesi login persisten, logout, dan callback/redirect.
+- Onboarding 3 slide otomatis untuk login pertama per akun; bisa dibuka kembali dari tombol **Panduan**.
 - Tampilan demo tanpa login hanya muncul jika proyek Supabase belum dikonfigurasi. Demo berisi data dummy.
 
 > **Penting:** autentikasi ini nyata setelah Anda memasukkan Supabase Project URL dan publishable/anon key serta mengaktifkan provider. Kredensial OAuth Google/Facebook harus disetel di dashboard masing-masing dan Supabase. Saya tidak dapat mengaktifkan provider di akun Anda karena memerlukan kredensial milik Anda.
@@ -21,6 +22,8 @@ warisku-github-pages/
 ├── index.html                       # UI + layar login/register
 ├── auth.js                          # integrasi Supabase Auth
 ├── auth-config.js                   # Project URL dan public/publishable key
+├── onboarding.js                    # First-login onboarding slides
+├── onboarding.css                   # Responsive modal, carousel & dots
 ├── assets/
 │   ├── favicon.svg
 │   ├── warisku_ui_overview.png
@@ -30,6 +33,12 @@ warisku-github-pages/
 ├── .gitignore
 └── README.md
 ```
+
+## Onboarding pengguna baru
+
+Setelah autentikasi berhasil, pengguna yang belum menyelesaikan pengenalan akan melihat modal tiga slide: (1) apa itu Warisku, (2) Family Asset Map dan diferensiasi dari folder penyimpanan umum, (3) protokol keluarga dan penjelasan bahwa heartbeat bukan bukti kematian atau izin membuka vault. Pengguna dapat geser di perangkat sentuh, memakai panah keyboard, memilih titik navigasi, kembali, melewati, atau menutup panduan.
+
+Status penyelesaian disimpan ke metadata pengguna Supabase agar tidak muncul lagi di perangkat lain setelah sinkronisasi berhasil; localStorage per user menjadi fallback jika sinkronisasi gagal. Tombol **Panduan** di header membuka kembali tur kapan saja. Ini adalah UX onboarding saja, bukan data onboarding bisnis atau profil keluarga di database.
 
 ## 2. Buat proyek Supabase
 
