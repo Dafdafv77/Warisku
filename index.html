@@ -2,10 +2,13 @@
 <html lang="id">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Warisku — Interactive Product Prototype</title>
+<title>Warisku — Family Continuity</title>
 <meta name="description" content="Prototipe interaktif Warisku: Family Continuity Platform untuk peta aset, kesiapan keluarga, protokol kontinuitas, dan simulasi akses terkontrol." />
-<meta name="theme-color" content="#204d43" />
+<meta name="theme-color" content="#23352e" />
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./onboarding.css">
 <style>
 :root{--ink:#1d302d;--muted:#6e7d77;--line:#e2e8e2;--bg:#f4f6f2;--card:#fffefa;--green:#204d43;--green2:#dcebe3;--lime:#c7e5ad;--gold:#dfb66b;--orange:#b96b3d;--red:#a84242;--redbg:#fae9e5;--blue:#577f97;--bluebg:#e9f1f5;--shadow:0 12px 32px rgba(23,54,44,.07)}
@@ -22,7 +25,9 @@
 .auth-main{padding:clamp(24px,5vw,64px) 26px;display:flex;align-items:center;justify-content:center;min-width:0}.auth-card{width:min(100%,430px);background:#fffefa;border:1px solid #e0e7dd;border-radius:23px;padding:clamp(22px,3vw,34px);box-shadow:0 18px 55px #17362c0a}.auth-mobilebrand{display:none}.auth-card h2{font-size:26px;letter-spacing:-.9px;margin:0 0 7px}.auth-subtitle{font-size:12px;color:#77847c;line-height:1.65;margin-bottom:23px}.auth-tabs{display:grid;grid-template-columns:1fr 1fr;padding:4px;background:#f0f3ed;border-radius:12px;margin:0 0 20px}.auth-tab{background:transparent;border:0;border-radius:9px;padding:10px;font-size:12px;font-weight:800;color:#6d7a72}.auth-tab.active{background:white;color:#204d43;box-shadow:0 1px 5px #203d2e10}.auth-field{margin-bottom:14px}.auth-field label{display:block;font-size:11px;font-weight:750;color:#53675b;margin-bottom:6px}.auth-input{width:100%;height:44px;border:1px solid #dce4da;border-radius:10px;background:white;padding:0 12px;color:#20352d;outline:none;font-size:13px}.auth-input:focus{border-color:#739681;box-shadow:0 0 0 3px #e6f0e8}.auth-password-note{font-size:10px;color:#87938a;margin-top:5px}.auth-primary{width:100%;min-height:44px;border:0;border-radius:10px;background:#204d43;color:white;font-size:12px;font-weight:850;margin-top:3px}.auth-primary:hover{background:#163a31}.auth-primary:disabled,.auth-social:disabled{opacity:.5;cursor:not-allowed}.auth-divider{display:flex;align-items:center;gap:10px;color:#929c94;font-size:10px;margin:18px 0}.auth-divider:before,.auth-divider:after{content:"";height:1px;background:#e5eae3;flex:1}.auth-socialrow{display:grid;grid-template-columns:1fr 1fr;gap:10px}.auth-social{min-height:43px;border:1px solid #dce3da;background:white;border-radius:10px;display:flex;align-items:center;justify-content:center;gap:9px;font-size:11px;font-weight:800;color:#374a40}.auth-social:hover{background:#f8faf6}.auth-socialmark{width:19px;height:19px;border-radius:5px;display:grid;place-items:center;font-weight:900;font-size:12px}.auth-google .auth-socialmark{color:#4285f4;border:1px solid #e3e7ef}.auth-facebook .auth-socialmark{background:#1877f2;color:white;font-family:Arial,sans-serif;font-size:16px}.auth-textlink{background:none;border:0;padding:0;color:#386a4d;font-size:11px;font-weight:800;text-decoration:underline;text-underline-offset:3px}.auth-formfooter{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:14px}.auth-status{display:none;padding:11px 12px;border-radius:10px;font-size:11px;line-height:1.55;margin:0 0 14px;overflow-wrap:anywhere}.auth-status.show{display:block}.auth-status.info{background:#edf4f6;color:#41677a;border:1px solid #d9e8ee}.auth-status.success{background:#eaf4eb;color:#2f6944;border:1px solid #d6e8d7}.auth-status.error{background:#fbefec;color:#974d43;border:1px solid #f0d9d3}.auth-config-notice{background:#fff4de;border:1px solid #efdba9;color:#795a1e;border-radius:11px;padding:12px;font-size:11px;line-height:1.6;margin-bottom:16px}.auth-config-notice code{font-size:10px;overflow-wrap:anywhere}.auth-demo{width:100%;border:1px dashed #b8cabb;border-radius:10px;background:#f6f9f4;color:#365b44;font-size:11px;font-weight:800;padding:11px;margin-top:12px}.auth-footnote{font-size:10px;color:#939c94;line-height:1.65;text-align:center;margin:18px 0 0}.user-email{font-size:11px;color:#66766e;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.signout-btn{border:1px solid #dbe3d9;background:#fff;border-radius:9px;padding:8px 10px;font-size:11px;font-weight:800;color:#315648}.auth-loading{display:none;align-items:center;gap:8px;color:#61776a;font-size:11px;margin-top:10px}.auth-loading.show{display:flex}.auth-spinner{width:13px;height:13px;border:2px solid #dbe6dc;border-top-color:#367153;border-radius:50%;animation:authspin .8s linear infinite}@keyframes authspin{to{transform:rotate(360deg)}}
 @media(max-width:900px){.auth-page{grid-template-columns:1fr}.auth-story{display:none}.auth-main{min-height:100vh;padding:20px}.auth-mobilebrand{display:flex;align-items:center;gap:10px;font-weight:850;font-size:18px;margin-bottom:24px}.auth-mobilebrand small{display:block;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:#7e8a82}.auth-mobilebrand .auth-brandmark{width:36px;height:36px}.auth-card{box-shadow:0 12px 38px #17362c09}}
 @media(max-width:460px){.auth-main{padding:14px}.auth-card{padding:22px 18px;border-radius:19px}.auth-card h2{font-size:24px}.auth-socialrow{grid-template-columns:1fr}.user-email{display:none}.signout-btn{padding:7px 8px;font-size:10px}.topbar .brand{font-size:16px}}
-</style></head>
+</style>
+<link rel="stylesheet" href="./design-system.css">
+</head>
 <body>
 <div id="authView" class="auth-page">
   <section class="auth-story" aria-label="Tentang Warisku">
@@ -96,11 +101,27 @@
     <div class="workspace">
       <section class="screen active" data-screen="0">
         <div class="hero">
-          <div class="eyebrow" style="color:#bfd9c7;margin-bottom:12px">Kesiapan keluarga, bukan sekadar file</div>
-          <h1>Jika suatu hari Anda tidak bisa mengurus semuanya, keluarga tetap tahu harus mulai dari mana.</h1>
-          <p>Warisku membantu Anda memetakan aset, menata dokumen, menentukan orang tepercaya, dan menyiapkan langkah yang perlu dilakukan keluarga saat dibutuhkan.</p>
-          <button class="btn" style="background:var(--lime);color:#1e463b" data-action="start">Mulai susun peta keluarga →</button>
-          <div class="hero-meta"><div><strong>01</strong>Kenali aset</div><div><strong>02</strong>Siapkan instruksi</div><div><strong>03</strong>Jaga kesiapan</div></div>
+          <div class="hero-copy">
+            <div class="hero-kicker"><span class="hero-kicker-dot"></span> Kesiapan keluarga, bukan sekadar file</div>
+            <h1>Hal penting hari ini. Tetap jelas saat keluarga membutuhkannya.</h1>
+            <p>Petakan aset, rapikan lokasi dokumen, dan siapkan langkah berikutnya untuk orang-orang yang Anda sayangi.</p>
+            <button class="btn hero-cta" data-action="start">Mulai susun peta keluarga <span aria-hidden="true">↗</span></button>
+            <div class="hero-meta"><div><strong>01</strong>Kenali aset</div><div><strong>02</strong>Siapkan instruksi</div><div><strong>03</strong>Jaga kesiapan</div></div>
+          </div>
+          <div class="hero-showcase" aria-hidden="true">
+            <div class="hero-glow"></div>
+            <div class="hero-preview-top"><span><i></i> FAMILY OVERVIEW</span><span class="hero-preview-chip">DEMO DATA</span></div>
+            <div class="hero-preview-card">
+              <div class="hero-preview-heading"><div><small>RINGKASAN KELUARGA</small><strong>Family Asset Map</strong></div><span class="hero-preview-count">08 <small>aset</small></span></div>
+              <div class="hero-preview-items">
+                <div class="hero-preview-item"><span class="hero-preview-icon">⌂</span><div><strong>Properti</strong><small>Sertifikat & lokasi dokumen</small></div><b>✓</b></div>
+                <div class="hero-preview-item"><span class="hero-preview-icon hero-ic-lime">↗</span><div><strong>Investasi & polis</strong><small>Institusi dan informasi penting</small></div><b>✓</b></div>
+                <div class="hero-preview-item"><span class="hero-preview-icon hero-ic-sand">◎</span><div><strong>Orang tepercaya</strong><small>Kontak dan instruksi keluarga</small></div><span class="hero-preview-review">TINJAU</span></div>
+              </div>
+              <div class="hero-preview-bottom"><div><small>KESIAPAN INFORMASI</small><strong>5 dari 8 item terdata</strong></div><div class="hero-preview-progress"><span></span></div><em>68%</em></div>
+            </div>
+            <div class="hero-floating-note"><span class="hero-note-mark">✓</span><span><strong>Informasi saling terhubung</strong><small>Aset · dokumen · tindakan</small></span></div>
+          </div>
         </div>
         <div class="sectionlabel">Apa yang Anda siapkan?</div>
         <div class="grid3">

@@ -15,6 +15,12 @@ Prototipe statis **Warisku: Family Continuity Platform** dengan autentikasi nyat
 >
 > **Bukan production vault:** semua data aset yang ada di layar saat ini masih data contoh yang tertanam di frontend. Login tidak otomatis membuatnya tersimpan per pengguna atau melindunginya dari orang yang membaca source HTML. Jangan masukkan KTP, dokumen, nilai aset, password, private key, atau informasi pribadi sungguhan. Produk produksi memerlukan database/storage dan otorisasi server-side/RLS.
 
+## Design refresh — Modern Family Fintech
+
+UI menggunakan lapisan visual terpisah di `design-system.css`: warm white, forest green, aksen lime selektif, headline yang lebih kuat, dan preview Family Asset Map pada hero. Urutan produk, ID elemen, autentikasi, dan onboarding dipertahankan. Lihat `DESIGN_SYSTEM.md` untuk token warna dan prinsip desain.
+
+Pastikan workflow GitHub Pages menyalin `design-system.css` ke `_site`. File tersebut sudah masuk daftar artifact di `.github/workflows/deploy-pages.yml`.
+
 ## 1. Struktur folder
 
 ```text
@@ -24,6 +30,9 @@ warisku-github-pages/
 ├── auth-config.js                   # Project URL dan public/publishable key
 ├── onboarding.js                    # First-login onboarding slides
 ├── onboarding.css                   # Responsive modal, carousel & dots
+├── design-system.css                # Modern Family Fintech visual layer
+├── DESIGN_SYSTEM.md                 # Design tokens and implementation notes
+├── ONBOARDING.md                    # First-login onboarding behavior
 ├── assets/
 │   ├── favicon.svg
 │   ├── warisku_ui_overview.png
@@ -111,7 +120,7 @@ Lakukan test berikut:
 
 ## 8. Push ke GitHub dan deploy
 
-Workflow `.github/workflows/deploy-pages.yml` telah diperbarui agar menyalin `index.html`, `auth.js`, `auth-config.js`, dan `assets/` ke artifact Pages. GitHub Pages hanya host file frontend; backend autentikasi disediakan Supabase.
+Workflow `.github/workflows/deploy-pages.yml` telah diperbarui agar menyalin `index.html`, `auth.js`, `auth-config.js`, `onboarding.js`, `onboarding.css`, `design-system.css`, dan `assets/` ke artifact Pages. GitHub Pages hanya host file frontend; backend autentikasi disediakan Supabase.
 
 ### Jika repository Anda sudah ada di komputer (disarankan)
 
@@ -122,8 +131,8 @@ Workflow `.github/workflows/deploy-pages.yml` telah diperbarui agar menyalin `in
 
 ```bash
 git status
-git add index.html auth.js auth-config.js README.md AUTH_SETUP.md .github/workflows/deploy-pages.yml
-git commit -m "Add Supabase authentication to Warisku prototype"
+git add index.html design-system.css assets/favicon.svg README.md DESIGN_SYSTEM.md .github/workflows/deploy-pages.yml
+git commit -m "Refresh Warisku UI with modern family fintech design"
 git push origin main
 ```
 
@@ -133,7 +142,7 @@ Jika Anda juga mengganti/menambah asset, gunakan `git add -A` setelah mengecek `
 
 Unggah/replace file individual dengan path yang sama, dan tambahkan `auth.js` serta `auth-config.js` di root repo. Pastikan workflow tersimpan di `.github/workflows/deploy-pages.yml`. Lebih mudah memakai GitHub Desktop jika perlu menambahkan beberapa direktori sekaligus.
 
-**Tidak perlu menghapus semua file di GitHub.** Cukup perbarui `index.html`, `README.md`, workflow, serta tambahkan dua file autentikasi. Asset lama tetap dipertahankan. Jangan upload ZIP sebagai satu file dan berharap GitHub Pages mengekstraknya.
+**Tidak perlu menghapus semua file di GitHub.** Perbarui `index.html`, `design-system.css`, `onboarding.css`, `onboarding.js`, `README.md`, dokumentasi desain, workflow, dan favicon. Pertahankan `auth.js`, `auth-config.js` aktif, serta konfigurasi/variables Supabase yang sudah berfungsi kecuali ada perubahan autentikasi khusus. Asset lain tetap dipertahankan. Jangan upload ZIP sebagai satu file dan berharap GitHub Pages mengekstraknya.
 
 Sebelum push, buat Repository Actions variables `SUPABASE_URL` dan `SUPABASE_PUBLISHABLE_KEY` seperti dijelaskan di `AUTH_SETUP.md`. Setelah push, buka tab **Actions**, pastikan workflow hijau, lalu buka URL di Settings → Pages atau deployment job. File `auth-config.js` di repository boleh tetap berisi placeholder: workflow membuat salinan yang benar pada artifact deploy, jadi file itu tidak perlu diedit manual.
 
