@@ -27,11 +27,48 @@ jobs:
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
+      - name: Generate Supabase frontend config from repository variables
+        env:
+          SUPABASE_URL_VAR: ${{ vars.SUPABASE_URL }}
+          SUPABASE_PUBLISHABLE_KEY_VAR: ${{ vars.SUPABASE_PUBLISHABLE_KEY }}
+          SUPABASE_URL_SECRET: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_PUBLISHABLE_KEY_SECRET: ${{ secrets.SUPABASE_PUBLISHABLE_KEY }}
+        run: |
+          python3 - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          url = (os.getenv("SUPABASE_URL_VAR") or os.getenv("SUPABASE_URL_SECRET") or "").strip()
+          key = (os.getenv("SUPABASE_PUBLISHABLE_KEY_VAR") or os.getenv("SUPABASE_PUBLISHABLE_KEY_SECRET") or "").strip()
+
+          if not url or not key:
+              raise SystemExit(
+                  "Missing Supabase configuration. Add repository Actions variables "
+                  "SUPABASE_URL and SUPABASE_PUBLISHABLE_KEY, then rerun this workflow."
+              )
+          if not url.startswith("https://"):
+              raise SystemExit("SUPABASE_URL must start with https://")
+          if "YOUR_PROJECT_REF" in url or "YOUR_SUPABASE" in key:
+              raise SystemExit("Supabase placeholders are still present. Set real project values.")
+
+          config = (
+              "// Generated at deploy time by GitHub Actions. Do not edit this generated file.\n"
+              "window.WARISKU_AUTH_CONFIG = {\n"
+              f"  supabaseUrl: {json.dumps(url)},\n"
+              f"  supabasePublicKey: {json.dumps(key)}\n"
+              "};\n"
+          )
+          Path("auth-config.js").write_text(config, encoding="utf-8")
+          print("Supabase frontend config generated successfully.")
+          PY
+
       - name: Prepare static site
         run: |
           mkdir -p _site
-          cp index.html _site/index.html
+          cp index.html auth.js auth-config.js _site/
           cp -R assets _site/assets
+          touch _site/.nojekyll
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
