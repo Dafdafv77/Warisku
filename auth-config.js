@@ -8,6 +8,6 @@
  * NEVER put a Supabase service_role key, database password, or OAuth client secret here.
  */
 window.WARISKU_AUTH_CONFIG = {
-  supabaseUrl: "https://YOUR_PROJECT_REF.supabase.co",
-  supabasePublicKey: "YOUR_SUPABASE_PUBLISHABLE_OR_ANON_KEY"
+  supabaseUrl: "https://zmlrxfdhqaodrakhwpww.supabase.co",
+  supabasePublicKey: "sb_publishable_hju27qNDp2tcuepF99PvVA_nrQdcYlg"
 };
